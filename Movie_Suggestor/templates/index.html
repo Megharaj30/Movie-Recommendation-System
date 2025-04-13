@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Recommender</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    async function fetchSuggestions() {
+      const query = document.getElementById('movieInput').value;
+      if (query.length < 2) {
+        document.getElementById('suggestions').innerHTML = '';
+        return;
+      }
+  
+      const res = await fetch(`/suggest?q=${query}`);
+      const data = await res.json();
+  
+      let html = '';
+      data.suggestions.forEach(title => {
+        html += `<div class="suggestion-item" onclick="selectSuggestion('${title.replace(/'/g, "\\'")}')">${title}</div>`;
+      });
+      document.getElementById('suggestions').innerHTML = html;
+    }
+  
+    function selectSuggestion(title) {
+      document.getElementById('movieInput').value = title;
+      document.getElementById('suggestions').innerHTML = '';
+    }
+  </script>
+  
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-title">🎬 Movie Recommender System</h1>
+
+    <form action="/recommend" method="POST" class="search-box">
+      <div class="autocomplete-wrapper">
+        <input type="text" id="movieInput" name="movie_name" placeholder="Type a movie name..." onkeyup="fetchSuggestions()" autocomplete="off" required>
+        <div id="suggestions" class="suggestion-list"></div>
+      </div>
+      <button type="submit">🔍 Get Recommendations</button>
+    </form>
+
+    {% if recent %}
+    <div class="recent-box">
+      <h3>🕒 Recent Searches</h3>
+      <ul class="recent-list">
+        {% for movie in recent %}
+        <li>{{ movie }}</li>
+        {% endfor %}
+      </ul>
+      <a href="/clear" class="clear-btn">🧹 Clear History</a>
+    </div>
+    {% endif %}
+
+    <div class="trending-section">
+      <h2>🔥 Trending Movies</h2>
+      <div class="card-grid">
+        {% for movie in trending %}
+        <div class="movie-card">
+          <h4>{{ movie.title }}</h4>
+          <a href="{{ movie.trailer_url }}" target="_blank" class="trailer-link">▶ Watch Trailer</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <section class="genre-section">
+      <h2 class="genre-title">🎭 Explore by Genre</h2>
+      <div class="genre-grid">
+        <div class="genre-box" onclick="window.location.href='/genre/Action'">Action</div>
+        <div class="genre-box" onclick="window.location.href='/genre/Romance'">Romance</div>
+        <div class="genre-box" onclick="window.location.href='/genre/Thriller'">Thriller</div>
+        <div class="genre-box" onclick="window.location.href='/genre/Horror'">Horror</div>
+        <div class="genre-box" onclick="window.location.href='/genre/Comedy'">Comedy</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
