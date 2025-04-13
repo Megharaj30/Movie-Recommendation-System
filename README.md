@@ -12,7 +12,7 @@ A Flask-based web application that recommends movies based on user input using T
 - Python (Flask)
 - HTML/CSS + JS
 - Pandas, scikit-learn
-- TMDB API (optional for trailers/posters)
+
 
 ## 📁 How to Run
 ```bash
