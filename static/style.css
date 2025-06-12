@@ -1,0 +1,247 @@
+/* ========== Google Font ========== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* ========== Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  padding: 30px 15px;
+  min-height: 100vh;
+}
+
+/* ========== Container ========== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ========== Titles ========== */
+.main-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #00ffc8;
+  text-shadow: 2px 2px 10px rgba(0, 255, 200, 0.4);
+}
+
+.genre-title, .genre-heading, h2, h3 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #00ffc8;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 5px rgba(0, 255, 200, 0.2);
+}
+
+/* ========== Search Box ========== */
+.search-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.search-box input {
+  width: 80%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  outline: none;
+  background-color: #1f1f1f;
+  color: #fff;
+  border: 1px solid #00ffc8;
+  transition: 0.3s ease;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 10px #00ffc8;
+}
+
+.search-box button {
+  padding: 10px 25px;
+  border: none;
+  background: #00ffc8;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.search-box button:hover {
+  background: #02eebc;
+  transform: scale(1.05);
+}
+
+/* ========== Autocomplete ========== */
+.autocomplete-wrapper {
+  position: relative;
+  width: 80%;
+}
+
+.suggestion-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #2c2c2c;
+  border-radius: 0 0 8px 8px;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.suggestion-item:hover {
+  background: #444;
+}
+
+/* ========== Movie Cards ========== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.movie-card {
+  background: #1c1c1e;
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 255, 200, 0.2);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 255, 200, 0.4);
+}
+
+.movie-card h4 {
+  color: #00ffc8;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.movie-details {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #ddd;
+}
+
+/* ========== Poster Image ========== */
+.poster {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.poster.big {
+  width: 200px;
+  margin: 10px 0;
+}
+
+/* ========== Trailer Button ========== */
+.trailer-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #00ffc8;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.trailer-link:hover {
+  color: #ffffff;
+}
+
+.trailer-link.big {
+  font-size: 1.2rem;
+}
+
+/* ========== Back / Clear Buttons ========== */
+.back-btn, .clear-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 20px;
+  background: #00ffc8;
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover, .clear-btn:hover {
+  background: #02eebc;
+}
+
+/* ========== Genre Section ========== */
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.genre-box {
+  background: #282828;
+  padding: 14px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+  color: #00ffc8;
+  border: 1px solid #00ffc8;
+}
+
+.genre-box:hover {
+  background: #00ffc8;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* ========== Error Message ========== */
+.error-msg {
+  background: #ff4c4c;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* ========== Responsive Fix ========== */
+@media (max-width: 600px) {
+  .search-box input,
+  .autocomplete-wrapper {
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .genre-title {
+    font-size: 1.5rem;
+  }
+}

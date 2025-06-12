@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎥 Recommendations</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-title">🎬 Recommendations</h1>
+
+    {% if error %}
+    <p class="error-msg">{{ error }}</p>
+    <a href="/" class="back-btn">🔁 Try Again</a>
+    {% else %}
+
+    <!-- Main Searched Movie -->
+    <div class="searched-box movie-card searched-section">
+      <h2>🔍 You searched for: {{ movie.title }}</h2>
+      <p class="movie-details"><strong>🎬 Director:</strong> {{ movie.director }}</p>
+      <p class="movie-details"><strong>🎭 Cast:</strong> {{ movie.cast }}</p>
+      <p class="movie-details"><strong>⏱ Runtime:</strong> {{ movie.runtime }}</p>
+      <p class="movie-details"><strong>⭐ Rating:</strong> {{ movie.rating }}</p>
+      <a href="{{ movie.trailer_url }}" target="_blank" class="trailer-link big">▶ Watch Trailer</a>
+    </div>
+
+    <!-- Recommendations -->
+    <h3>💡 You might also like:</h3>
+    <div class="card-grid">
+      {% for rec in recommended %}
+      <div class="movie-card">
+        <h4>{{ rec.title }}</h4>
+        <p class="movie-details">🎬 {{ rec.director }}</p>
+        <p class="movie-details">⏱ {{ rec.runtime }}</p>
+        <p class="movie-details">⭐ {{ rec.rating }}</p>
+        <a href="{{ rec.trailer_url }}" target="_blank" class="trailer-link">▶ Watch Trailer</a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <a href="/" class="back-btn">🔁 Try Another Movie</a>
+    {% endif %}
+
+    <!-- Genre Section -->
+    <h2 class="genre-title">🎞 Explore by Genre</h2>
+    <div class="genre-grid">
+      <a href="/genre/Action" class="genre-box">Action</a>
+      <a href="/genre/Romance" class="genre-box">Romance</a>
+      <a href="/genre/Thriller" class="genre-box">Thriller</a>
+      <a href="/genre/Horror" class="genre-box">Horror</a>
+      <a href="/genre/Comedy" class="genre-box">Comedy</a>
+      <a href="/genre/Adventure" class="genre-box">Adventure</a>
+      <a href="/genre/Animation" class="genre-box">Animation</a>
+      <a href="/genre/Drama" class="genre-box">Drama</a>
+    </div>
+  </div>
+</body>
+</html>
