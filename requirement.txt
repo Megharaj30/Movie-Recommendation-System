@@ -2,3 +2,6 @@ Flask
 gunicorn
 pandas
 scikit-learn
+IMDbPY
+requests
+numpy
